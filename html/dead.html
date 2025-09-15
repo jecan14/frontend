@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All of Us Are Dead</title>
+    <link rel="stylesheet" href="../css/dead.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../poster/logo.jfif" type="image/x-icon">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html"><img src="../poster/el.jfif" alt="wilsen"/></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  
+    <main>
+        <h2 class="now-showing">NOW SHOWING</h2>
+        <div class="movie-section">
+            <div class="poster" aria-label="#">
+                <img src="../poster/dead.jfif" alt="dead" />
+            </div>
+            <div class="details" role="region" aria-labelledby="movieTitle">
+                <div class="title" id="movieTitle">All of Us Are Dead</div>
+                <div class="info">
+                    <p><span class="rating-label">MTRCB Rating:</span> <span class="rating">R-18</span></p>
+                    <p>Genre: Horror, Action, Thriller, Drama, Zombie Apocalypse, Coming-of-Age</p>
+                    <p>Director: Lee Jae-kyoo and Kim Nam-su</p>
+                    <p>Cast: Park Ji-hu, Yoon Chan-young, Cho Yi-hyun, Lomon</p>
+                    <p>Follows a group of high school students as they confront a viral outbreak that turns their classmates into monsters. Trapped between adolescence and apocalypse, they fight to survive in a world where innocence dies fast and growing up means killing or being killed.</p>
+                    <p>Available in: 2D, 3D</p>
+                    <a href="#" class="trailer-link" id="openTrailer">
+  <svg fill="red" height="16" width="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+  See Trailer
+</a>
+                </div>
+                <select class="buy-tickets" id="myDropdown" onchange="navigateToPage()">
+                    <option value="">BUY TICKETS</option>
+                        <option value="dead1.html">Ilocos Sur</option>
+                </select>
+            </div>
+        </div>
+    </main>
+
+   
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">ALL OF US ARE DEAD</div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IN5TD4VRcSM?si=tEY7kg6qr1cPloRb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EL Cinematics. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/superman.js"></script>
+</body>
+
+</html>

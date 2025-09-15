@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Impossible: The Final Reckoning</title>
+    <link rel="stylesheet" href="../css/mission.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../poster/logo.jfif" type="image/x-icon">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html"><img src="../poster/el.jfif" alt="wilsen"/></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  
+    <main>
+        <h2 class="now-showing">NOW SHOWING</h2>
+        <div class="movie-section">
+            <div class="poster" aria-label="#">
+                <img src="../poster/mission.jpg" alt="mission" />
+            </div>
+            <div class="details" role="region" aria-labelledby="movieTitle">
+                <div class="title" id="movieTitle">Mission Impossible: The Final Reckoning</div>
+                <div class="info">
+                    <p><span class="rating-label">MTRCB Rating:</span> <span class="rating">PG</span></p>
+                    <p>Genre: Action, Spy, Thriller</p>
+                    <p>Director: Christopher McQuarrie</p>
+                    <p>Cast: Tom Cruise, Hayley Atwell, Ving Rhames, Simon Pegg, Esai Morales, Pom Klementieff, Henry Czerny, Angela Bassett</p>
+                    <p>Follows a seasoned agent as he races to stop a threat greater than any he's faced—one that challenges not just his skills, but his very purpose. He is the embodiment of loyalty, sacrifice, and resolve in a world that no longer believes in heroes who follow the mission to the end.</p>
+                    <p>Available in: 2D, 3D</p>
+                    <a href="#" class="trailer-link" id="openTrailer">
+  <svg fill="red" height="16" width="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+  See Trailer
+</a>
+                </div>
+                <select class="buy-tickets" id="myDropdown" onchange="navigateToPage()">
+                    <option value="">BUY TICKETS</option>
+                        <option value="mission1.html">Ilocos Sur</option>
+                </select>
+            </div>
+        </div>
+    </main>
+
+   
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">MISSION IMPOSSIBLE: THE FINAL RECKONING</div>
+            <div class="video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fsQgc9pCyDU?si=1akHp_9jOmsy4m9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EL Cinematics. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/superman.js"></script>
+</body>
+
+</html>

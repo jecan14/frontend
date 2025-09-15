@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL Cinematics</title>
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../poster/logo.jfif" type="image/x-icon">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html"><img src="../poster/el.jfif" alt="wilsen"/></a>
+                </div>
+            </div>
+        </div>
+
+        
+    </header><br>
+
+    <div class="form-container">
+        <h2>Please fill out the required fields</h2>
+
+        <!-- SINGLE FORM FOR AJAX -->
+        <form id="contactForm" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullname">Fullname</label>
+                    <input type="text" id="fullname" name="fullname" required />
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact No.</label>
+                    <input type="text" id="contact" name="contact" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="branch">Branch</label>
+                    <select id="branch" name="branch">
+                        <option>Choose your option</option>
+                        <option>Branch 1</option>
+                        <option>Branch 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option>Choose your option</option>
+                        <option>Sales Inquiry</option>
+                        <option>Customer Care</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+
+            <div class="privacy-notice">
+                <strong>Privacy and Consent Notice</strong>
+                <p>To proceed, please confirm your consent by ticking the boxes below:</p>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree1" name="agree1" required />
+                    <label for="agree1">I have read, understood, and agree to the <strong>Privacy Policy</strong>.</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree2" name="agree2" required />
+                    <label for="agree2">I consent to the collection, use, and processing of my personal data as outlined in the <strong>Privacy Policy</strong>.</label>
+                </div>
+
+                <p>By providing your consent, you enable us to offer a better, more personalized experience while ensuring your data is handled responsibly and securely.</p>
+            </div>
+
+            <button class="submit-button" type="submit">Send your message</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 EL Cinematics. All rights reserved.</p>
+    </footer>
+
+    <!-- AJAX SCRIPT -->
+    <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Stop normal form submission
+
+        let formData = new FormData(this);
+
+        fetch("save_message.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data); // Show success or error message from PHP
+            if (data.includes("successfully")) {
+                document.getElementById("contactForm").reset(); // Clear form
+            }
+        })
+        .catch(error => {
+            alert("Error sending message!");
+            console.error(error);
+        });
+    });
+    </script>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/superman.js"></script>
+</body>
+</html>

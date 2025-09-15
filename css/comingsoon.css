@@ -1,0 +1,96 @@
+/* Reset */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    padding: 20px;
+    color: #000;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d40000;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #ccc;
+    border-radius: 20vh;
+    padding-bottom: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Container grid for posters */
+.posters-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 17px 16px;
+    max-width: 1000px;
+    margin: 0 auto; /* ← This line centers it horizontally */
+}
+
+/* Each poster card */
+.poster-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+    outline-offset: 4px;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+.poster-card:focus,
+.poster-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 9px 15px rgb(0 0 0 / 0.25);
+    border-color: #b30000;
+}
+
+.poster-image {
+    width: 100%;
+    aspect-ratio: 155 / 235;
+    object-fit: cover;
+    display: block;
+    border-bottom: 0;
+    box-shadow: 0 0 4px rgb(0 0 0 / 0.05);
+    background-color: #eee;
+    transition: filter 0.25s ease;
+}
+
+.poster-card:hover .poster-image {
+    filter: brightness(95%);
+}
+
+.poster-overlay {
+    background: #800000;
+    color: #eee;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-align: center;
+    padding: 6px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    user-select: none;
+    border-top: 1px solid #7a0000;
+    box-shadow: inset 0 1px 1px rgb(255 255 255 / 0.15);
+}
+
+.poster-overlay.orange {
+    background: #c65e14;
+    border-top-color: #a35410;
+    box-shadow: inset 0 1px 1px rgba(255 255 255 / 0.2);
+}

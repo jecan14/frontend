@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="poster/logo.jfif" type="image/x-icon">
+  <title>Seat Reservation</title>
+  <style>
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #be0000; /* Gold like IMDb or Netflix gold */
+  margin-bottom: 10px;
+}
+
+.screen {
+  background: #444;
+  color: #ffffff;
+  height: 50px;
+  margin: 20px auto;
+  width: 80%;
+  line-height: 50px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.seating-area {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 8px;
+  justify-content: center;
+  max-width: 90%;
+  margin: 0 auto 30px auto;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #2ecc71; /* Available = green */
+  transition: 0.3s;
+  box-shadow: 0 0 5px #000;
+}
+
+.seat.reserved {
+  background: #e74c3c; /* Reserved = red */
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background: #3498db; /* Selected = blue */
+}
+
+.row-label {
+  grid-column: span 14;
+  text-align: left;
+  font-weight: bold;
+  color: #bbb;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.legend {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.legend span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 3px;
+}
+
+.available {
+  background: #2ecc71;
+}
+
+.reserved {
+  background: #e74c3c;
+}
+
+.selected {
+  background: #3498db;
+}
+
+/* Payment Summary */
+.summary-box {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(245, 197, 24, 0.2);
+  text-align: left;
+  border-radius: 8px;
+}
+
+.summary-box h2 {
+  color: #f44336; /* Red header */
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.summary-box p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.summary-box .price {
+  font-weight: bold;
+  color: #f44336;
+}
+
+.summary-box .seats-selected {
+  font-weight: bold;
+  color: #fff;
+}
+
+.btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+  transition: background 0.3s;
+  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.4);
+}
+
+.btn:hover {
+  background: #d32f2f;
+}
+
+.btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .seating-area {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .summary-box {
+    width: 90%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" id="movieLogoContainer">
+                    <a href="index.html"><img src="../poster/el.jfif" alt="EL Cinematics"/></a>
+                </div>
+            </div>
+        </div>
+    </header>
+  <h1>Seat Reservation</h1>
+  <div class="screen">MOVIE SCREEN - 2:35 PM @ Cinema 5</div>
+
+  <!-- Seating Grid -->
+  <div id="seating" class="seating-area"></div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span class="available"></span> Available
+    <span class="reserved"></span> Reserved
+    <span class="selected"></span> Selected
+  </div><br><br><br>
+
+  <!-- Payment Summary -->
+<div class="summary-box">
+  <h2>Payment Summary</h2>
+  <p>
+    (<span id="summaryFormat">--</span>) <span id="summaryTitle">Movie Ticket</span><br>
+<span id="summaryDate">--</span><br>
+    EL Cinematics Ilocos Sur<br>
+    2:35 PM Reserved Seating
+  </p>
+  
+
+  <p><strong>Ticket(s)</strong><br>
+    <span id="ticketCount">0x</span> &nbsp; <span id="ticketPrice">0.00 php</span></p>
+
+  <p style="color:red;"><strong>Web Admin Fee</strong><br>
+    1x &nbsp; 0.00 php : <span id="adminFee">0.00 php</span></p>
+
+  <p class="price">Total Price: <span id="totalPrice">0.00 php</span></p>
+
+  <p class="seats-selected" id="seatList">No seat(s) selected.</p>
+
+  <button class="btn" id="payBtn" disabled>PROCEED TO PAYMENT</button>
+</div>
+
+  <script>
+    const seating = document.getElementById("seating");
+    const rows = ['A','B','C','D','E','F','G','H','I','J','K'];
+    const seatsPerRow = 14;
+    const reservedSeats = ['H1', 'H2', 'H13', 'H14', 'G1', 'G14', 'I6', 'I7', 'I8'];
+    const selectedSeats = [];
+
+    const ticketPrice = 250; // php per ticket
+    const adminFee = 0;
+
+    // Summary elements
+    const seatList = document.getElementById("seatList");
+    const ticketCount = document.getElementById("ticketCount");
+    const ticketPriceEl = document.getElementById("ticketPrice");
+    const totalPriceEl = document.getElementById("totalPrice");
+    const payBtn = document.getElementById("payBtn");
+
+    rows.forEach(row => {
+      const label = document.createElement('div');
+      label.className = 'row-label';
+      label.innerText = row;
+      seating.appendChild(label);
+
+      for(let i = 1; i <= seatsPerRow; i++) {
+        const seatId = `${row}${i}`;
+        const seat = document.createElement('div');
+        seat.className = 'seat';
+        seat.dataset.seat = seatId;
+
+        if (reservedSeats.includes(seatId)) {
+          seat.classList.add('reserved');
+        }
+
+        seat.addEventListener('click', () => {
+          if (!seat.classList.contains('reserved')) {
+            seat.classList.toggle('selected');
+
+            if (selectedSeats.includes(seatId)) {
+              selectedSeats.splice(selectedSeats.indexOf(seatId), 1);
+            } else {
+              selectedSeats.push(seatId);
+            }
+
+            updateSummary();
+          }
+        });
+
+        seating.appendChild(seat);
+      }
+    });
+
+    function updateSummary() {
+      if (selectedSeats.length === 0) {
+        seatList.innerText = "No seat(s) selected.";
+        ticketCount.innerText = "0x";
+        ticketPriceEl.innerText = "0.00 php";
+        totalPriceEl.innerText = "0.00 php";
+        payBtn.disabled = true;
+      } else {
+        // Format seat list like A01, B05
+        const formattedSeats = selectedSeats.map(seat => {
+          let row = seat[0];
+          let number = seat.slice(1).padStart(2, '0');
+          return `${row}${number}`;
+        });
+
+        seatList.innerText = "Selected Seat(s): " + formattedSeats.join(', ');
+        ticketCount.innerText = `${selectedSeats.length}x`;
+        ticketPriceEl.innerText = `${(selectedSeats.length * ticketPrice).toFixed(2)} php`;
+        totalPriceEl.innerText = `${(selectedSeats.length * ticketPrice + adminFee).toFixed(2)} php`;
+        payBtn.disabled = false;
+      }
+    }
+function updateSummaryInfo() {
+  const selectedDate = document.getElementById("dateDropdown").value;
+  const selectedFormat = document.getElementById("formatDropdown").value;
+
+  const summaryDate = document.getElementById("summaryDate");
+  const summaryFormat = document.getElementById("summaryFormat");
+
+  summaryDate.innerText = selectedDate ? selectedDate : "--";
+  summaryFormat.innerText = selectedFormat ? selectedFormat : "--";
+}
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    date: params.get("date"),
+    format: params.get("format"),
+    movie: params.get("movie"),
+    poster: params.get("poster")
+  };
+}
+
+function updateSummaryFromParams() {
+  const { date, format, movie, poster } = getQueryParams();
+
+  if (date) {
+    document.getElementById("summaryDate").innerText = date;
+  }
+  if (format) {
+    document.getElementById("summaryFormat").innerText = format;
+  }
+  if (movie) {
+    document.getElementById("summaryTitle").innerText = movie;
+    document.getElementById("movieLogoContainer").innerHTML = `<a href="index.html"><img src="${poster}" alt="${movie}" style="height: 50px; width: auto;"/></a>`;
+  }
+}
+
+// Call the function on page load
+updateSummaryFromParams();
+
+
+
+  // This function should run when a movie is booked
+  function addMovieToBooking(format, title, date, time, location) {
+    // Get current booked movies or create a new array
+    let bookedMovies = JSON.parse(localStorage.getItem("bookedMovies")) || [];
+
+    // Add new movie details
+    bookedMovies.push({
+      format: format,
+      title: title,
+      date: date,
+      time: time,
+      location: location
+    });
+  }
+
+  payBtn.addEventListener("click", () => {
+  // Prepare booking info
+  const bookingInfo = {
+    title: document.getElementById("summaryTitle").innerText,
+    format: document.getElementById("summaryFormat").innerText,
+    date: document.getElementById("summaryDate").innerText,
+    time: "2:35 PM", // You can make this dynamic
+    seats: selectedSeats.map(seat => seat.padStart(3, "0")), // Format A01, B05
+    ticketCount: selectedSeats.length,
+    adminFee: adminFee.toFixed(2),
+    totalPrice: (selectedSeats.length * ticketPrice + adminFee).toFixed(2)
+  };
+
+  // Save to localStorage
+  localStorage.setItem("latestBooking", JSON.stringify(bookingInfo));
+
+  // Redirect to after-payment page
+  window.location.href = "payment.html";
+});
+
+  </script>
+</body>
+</html>

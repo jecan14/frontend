@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Superman",
+        "poster": "../poster/superman.jfif",
+        "trailerId": "uhUht6vAsMY",
+        "pageUrl": "superman.html"
+    },
+    {
+        "title": "Squid Game 3",
+        "poster": "../poster/squid.jfif",
+        "trailerId": "OLPwT05kYjw",
+        "pageUrl": "squid.html"
+    },
+    {
+        "title": "Us",
+        "poster": "../poster/us.jpg",
+        "trailerId": "hNCmb-4oXJA",
+        "pageUrl": "us.html"
+    },
+    {
+        "title": "Jurassic World Rebirth",
+        "poster": "../poster/jurasic.gif",
+        "trailerId": "jan5CFWs9ic",
+        "pageUrl": "jurasic.html"
+    },
+    {
+        "title": "All of Us Are Dead",
+        "poster": "../poster/dead.jfif",
+        "trailerId": "IN5TD4VRcSM",
+        "pageUrl": "dead.html"
+    },
+    {
+        "title": "Alice in Borderland",
+        "poster": "../poster/aib.webp",
+        "trailerId": "49_44FFKZ1M",
+        "pageUrl": "aib.html"
+    },
+    {
+        "title": "Karate Kid: Legends",
+        "poster": "../poster/karate.jpg",
+        "trailerId": "LhRXf-yEQqA",
+        "pageUrl": "karate.html"
+    }
+]

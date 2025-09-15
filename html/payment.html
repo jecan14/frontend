@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Payment Successful - EL Cinematics</title>
+<link rel="shortcut icon" href="poster/logo.jfif" type="image/x-icon">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+  }
+
+  .summary-container {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,255,0,0.2);
+    text-align: left;
+  }
+
+  .summary-container h2 {
+    color: #f44336;
+    margin-top: 0;
+  }
+
+  .summary-container p {
+    font-size: 15px;
+    margin: 8px 0;
+    color: #ccc;
+  }
+
+  .highlight {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #f44336;
+  }
+
+  .btn {
+    display: block;
+    margin: 20px auto 0;
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .btn:hover {
+    background: #d32f2f;
+  }
+
+  @media (max-width: 600px) {
+    .summary-container {
+      width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Payment Successful!</h1>
+<p>Thank you for booking with <strong>EL Cinematics</strong>.</p>
+
+<div class="summary-container">
+  <h2>Booking Summary</h2>
+  <p><span class="highlight" id="movieTitle">--</span> (<span id="movieFormat">--</span>)</p>
+  <p>Date: <span class="highlight" id="movieDate">--</span></p>
+  <p>Time: <span class="highlight" id="movieTime">--</span></p>
+  <p>Location: <span class="highlight" id="movieLocation">EL Cinematics Ilocos Sur</span></p>
+  <p>Seat(s): <span class="highlight" id="selectedSeats">--</span></p>
+  <p>Tickets: <span class="highlight" id="ticketCount">--</span></p>
+  <p>Admin Fee: <span class="highlight" id="adminFee">--</span></p>
+  <p class="price">Total Paid: <span id="totalPrice">--</span></p>
+</div>
+
+<a href="index.html" class="btn">Return Home</a>
+
+<script>
+  // Retrieve booking info from localStorage
+  const bookingData = JSON.parse(localStorage.getItem("latestBooking")) || {};
+
+  document.getElementById("movieTitle").innerText = bookingData.title || "--";
+  document.getElementById("movieFormat").innerText = bookingData.format || "--";
+  document.getElementById("movieDate").innerText = bookingData.date || "--";
+  document.getElementById("movieTime").innerText = bookingData.time || "--";
+  document.getElementById("selectedSeats").innerText = bookingData.seats ? bookingData.seats.join(", ") : "--";
+  document.getElementById("ticketCount").innerText = bookingData.ticketCount ? `${bookingData.ticketCount}x` : "--";
+  document.getElementById("adminFee").innerText = bookingData.adminFee !== undefined ? `${bookingData.adminFee} php` : "--";
+  document.getElementById("totalPrice").innerText = bookingData.totalPrice ? `${bookingData.totalPrice} php` : "--";
+</script>
+
+</body>
+</html>

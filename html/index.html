@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL Cinematics</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="shortcut icon" href="../poster/logo.jfif" type="image/x-icon">
+</head>
+<body>
+    <!-- This div is for the dynamic background -->
+    <div id="dynamicBackground"></div>
+
+                <header class="site-header">
+                    <div class="container header-content">
+                <div class="logo">
+                    <a href="index.html"><img src="../poster/el.jfif" alt="wilsen"/></a>
+                </div>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search for a movie...">
+                        <button onclick="searchMovie()">Search</button>
+                    </div>
+                    <button class="menu-toggle" id="menu-toggle">☰</button>
+                <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="nowshowing.html">Now Showing</a></li>
+                    <li><a href="advance.html">Advance Ticket Selling</a></li>
+                    <li><a href="comingsoon.html">Coming Soon</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="../form.html">Log Out</a></li>
+                </ul>
+                </nav>
+            </div>
+            </header><br>
+    <main>
+        <!-- Dynamic Carousel Section -->
+        <section class="dynamic-carousel-container" id="dynamicCarousel">
+            <!-- Movie items will be injected here by carousel.js -->
+        </section>
+
+        <section id="now-showing">
+            <h2>NOW SHOWING</h2>
+            
+
+            <div class="slider">
+                <div class="slider-track">
+                    <div class="movie-card">
+                        <img src="../poster/superman.jfif" alt="Superman">
+                        <h3>Superman</h3>
+                        <p>Showtimes: 1:00 PM, 3:00 PM, 5:00 PM</p>
+                        <a href="superman.html" class="superman">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/squid.jfif" alt="squid">
+                        <h3>Squid Game Season 3</h3>
+                        <p>Showtimes: 2:00 PM, 4:00 PM, 6:00 PM</p>
+                        <a href="squid.html" class="squid">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/us.jpg" alt="us">
+                        <h3>Us</h3>
+                        <p>Showtimes: 9:00 AM, 11:00 AM, 1:00 PM</p>
+                        <a href="us.html" class="us">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/jurasic.gif" alt="Jurassic">
+                        <h3>Jurassic World</h3>
+                        <p>Showtimes: 1:00 PM, 3:00 PM, 5:00 PM</p>
+                        <a href="jurasic.html" class="jurasic">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/dead.jfif" alt="dead">
+                        <h3>All of Us Are Dead</h3>
+                        <p>Showtimes: 3:00 PM, 5:00 PM, 7:00 PM</p>
+                        <a href="dead.html" class="dead">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/aib.webp" alt="aib">
+                        <h3>Alice in Borderland</h3>
+                        <p>Showtimes: 2:00 PM, 4:00 PM, 7:30 PM</p>
+                        <a href="aib.html" class="aib">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/mission.jpg" alt="mission">
+                        <h3>Mission Impossible: The Final Reckoning</h3>
+                        <p>Showtimes: 8:00 AM, 11:00 AM, 1:00 PM</p>
+                        <a href="mission.html" class="mission">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/kpop.jfif" alt="avatar">
+                        <h3>KPOP Demon Hunters</h3>
+                        <p>Showtimes: 2:00 PM, 4:00 PM, 6:00 PM</p>
+                        <a href="kpop.html" class="kpop">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/dragon.webp" alt="dragon">
+                        <h3>How to Train Your Dragon</h3>
+                        <p>Showtimes: 8:00 AM, 10:00 AM, 12:00 PM</p>
+                        <a href="dragon.html" class="dragon">View Movie</a>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/karate.jpg" alt="karate">
+                        <h3>Karate Kid: Legends</h3>
+                        <p>Showtimes: 8:00 AM, 11:00 AM, 3:00 PM</p>
+                        <a href="karate.html" class="karate">View Movie</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advance">
+            <h2>ADVANCE TICKET SELLING</h2>
+            <div class="advance-slider">
+                <div class="advance-track">
+                <div class="movie-card">
+                    <a href="spider.html"><img src="../poster/spider.jfif" alt="spider"/></a>
+                    <a href="spider.html"><button>Book Tickets</button></a>
+                </div>
+                <div class="movie-card">
+                    <img src="../poster/demonslayer.jpg" alt="demonslayer">
+                    <a href="demon.html"><button>Book Tickets</button></a>
+                </div>
+        </section>
+
+
+
+        <section id="vip-cinemas">
+            <h2>COMING SOON</h2>
+            <div class="slider">
+                <div class="slider-track">
+                    <div class="movie-card">
+                        <img src="../poster/prettycrazy.jpg" alt="prettycrazy">
+                        <h3>Pretty Crazy</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/runningman.jfif" alt="runningman">
+                        <h3>Running Man</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/walltowall.jfif" alt="walltowall">
+                        <h3>Wall to Wall</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/aibs3.jpg" alt="aibs3">
+                        <h3>Alice in Borderland Season 3</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/now.jpg" alt="now">
+                        <h3>Now You See Me: Now You Don't</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/holynight.jpg" alt="holynight">
+                        <h3>Holy Night: Demon Hunters</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/zoo.jfif" alt="zoo">
+                        <h3>Zootopia 2</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/conjuring.webp" alt="conjuring">
+                        <h3>The Conjuring: Last Rites</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/reader.jfif" alt="reader">
+                        <h3>Omniscient Reader: The Prophet</h3>
+                        
+                    </div>
+                    <div class="movie-card">
+                        <img src="../poster/chainsaw.jpg" alt="chainsaw">
+                        <h3>Chainsaw Man: Reze Arc</h3>
+                        
+                    </div>
+        </section>
+    </main>
+
+    <!-- Carousel Trailer Modal -->
+    <div id="carouselTrailerModal" class="carousel-modal">
+        <div class="carousel-modal-content">
+            <span id="carouselModalClose" class="carousel-modal-close">&times;</span>
+            <div class="carousel-video-container">
+                <iframe id="carouselVideoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EL Cinematics. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/carousel.js"></script>
+    <script src="../js/background.js"></script>
+
+</body>
+</html>
